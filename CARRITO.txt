@@ -1,0 +1,19 @@
+<div class="movil-cart">
+                <div class="col-md-5 ml-auto text-center">
+                  <?php
+                    $total=0;
+                      if(isset($_SESSION['carrito'])){
+                        $arregloCarrito =$_SESSION['carrito'];
+                        for ($i=0; $i < count($arregloCarrito) ; $i++) { 
+                          $total =$total + ($arregloCarrito[$i]['Precio']* $arregloCarrito[$i]['Cantidad']);
+                  ?>
+                    <div class="p-4 border mb-3 border-black">
+                    <img src="images/<?php echo $arregloCarrito[$i]['Imagen']?>" alt="<?php echo $arregloCarrito[$i]['Nombre']?>" width="125px">
+                      <span class="d-block EYELEVATION"><?php echo $arregloCarrito[$i]['Nombre']?></span><br>
+                      <span class="d-block verpedidodetalles">Cantidad: <?php echo $arregloCarrito[$i]['Cantidad'];?></span>
+                      <span class="d-block verpedidodetalles">Precio: S/<?php echo number_format($arregloCarrito[$i]['Precio'],2,'.','');?></span>
+                    </div>
+                  <?php } }?>
+                  <h4 class="verpedidodetalles">Total: S/<?php echo number_format($total,2,'.','');?></h4>
+                </div>
+              </div>
